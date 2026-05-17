@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const Canvas = require("discord-canvas");
+const MessageAttachment = require("discord.js");
 
 module.exports = (client) => {
 
@@ -9,10 +11,9 @@ module.exports = (client) => {
             const user = member.user;
             const server = member.guild;
 
-            const canvacord = require("canvacord");
-            const leaver = new canvacord.Leaver()
+            const image1 = await new Canvas.Goodbye()
                 .setUsername(user.username)
-                .setDiscriminator(user.discriminator || "0000")
+                .setDiscriminator(user.discriminator)
                 .setMemberCount(server.memberCount)
                 .setGuildName(server.name)
                 .setAvatar(user.displayAvatarURL({ format: "png", dynamic: true }))
@@ -22,14 +23,13 @@ module.exports = (client) => {
                 .setColor("message-box", "#8015EA")
                 .setColor("title", "#8015EA")
                 .setColor("avatar", "#ffffff")
-                .setBackground("https://i.ytimg.com/vi/HlMESVM7Lf0/maxresdefault.jpg");
+                .setBackground("https://i.ytimg.com/vi/HlMESVM7Lf0/maxresdefault.jpg")
+                .toAttachment();
 
-            const buffer = await leaver.build();
-            const attachment = new Discord.MessageAttachment(buffer, "goodbye-image.png");
-            const channel = member.guild.channels.cache.get(leaveChannel);
-            
-            if (channel) channel.send(attachment);
-            user.send(attachment).catch(() => {});
+            const attachment = new Discord.MessageAttachment(image1.toBuffer(), "goodbye-image.png");
+            const channel = member.guild.channels.cache.get(leaveChannel)
+            channel.send(attachment);
+            user.send(attachment)//.catch(console.log(error));
         } else {
             return;
         }

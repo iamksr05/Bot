@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const Canvas = require("discord-canvas");
+const MessageAttachment = require("discord.js");
 
 module.exports = (client) => {
     let welcomeChannel = '840600796088631316'
@@ -8,10 +10,9 @@ module.exports = (client) => {
 
             const user = member.user;
 
-            const canvacord = require("canvacord");
-            const welcomer = new canvacord.Welcomer()
+            const image = await new Canvas.Welcome()
                 .setUsername(user.username)
-                .setDiscriminator(user.discriminator || "0000")
+                .setDiscriminator(user.discriminator)
                 .setMemberCount(member.guild.memberCount)
                 .setGuildName(member.guild.name)
                 .setAvatar(user.displayAvatarURL({ format: "png", dynamic: true }))
@@ -21,14 +22,14 @@ module.exports = (client) => {
                 .setColor("message-box", "#74EB5B")
                 .setColor("title", "#F19D45")
                 .setColor("avatar", "#FFFFFF")
-                .setBackground("https://wallpapercave.com/wp/wp7044480.jpg");
+                .setBackground("https://wallpapercave.com/wp/wp7044480.jpg")
+                .toAttachment();
 
-            const buffer = await welcomer.build();
-            const attachment = new Discord.MessageAttachment(buffer, "welcome-image.png");
+            const attachment = new Discord.MessageAttachment(image.toBuffer(), "welcome-image.png");
             const channel = member.guild.channels.cache.get(welcomeChannel);
 
-            if (channel) channel.send(attachment);
-            user.send(attachment).catch(() => {});
+            channel.send(attachment);
+            user.send(attachment);
 
         } else {
             return;

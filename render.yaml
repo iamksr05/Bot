@@ -1,13 +1,13 @@
 services:
-  - type: worker
+  - type: web
     name: discord-bot
     env: node
-    plan: starter
+    plan: free
     buildCommand: npm install --ignore-scripts
     startCommand: node main.js
     envVars:
       - key: DISCORD_TOKEN
-        fromSecret: discord-token
+        sync: false
       - key: PREFIX
         sync: false
       - key: MONGOPATH
