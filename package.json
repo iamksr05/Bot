@@ -31,7 +31,6 @@
     "dotenv": "^10.0.0",
     "fetch": "^1.1.0",
     "ffmpeg-static": "^4.4.1",
-    "fs": "^0.0.1-security",
     "moment": "^2.29.4",
     "mongoose": "^6.13.9",
     "ms": "^2.1.3",
