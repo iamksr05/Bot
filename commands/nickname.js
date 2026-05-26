@@ -20,6 +20,7 @@ module.exports = {
         if (!nickName) return message.channel.send('You must state a nickname for the member');
         if (mentionedMember.user.id == message.guild.owner.user.id) return message.channel.send(`You cannot change the Owner's nickname`);
         if (mentionedMember.user.id == '827874200394924082' && message.author.id !== message.guild.owner.user.id) return message.channel.send('You cannot change my nickname.');
+        if (mentionedMember.user.id == '747042752415531021' && message.author.id !== message.guild.owner.user.id) return message.channel.send('You cannot change my owner\'s nickname.');
 
         const embed = new Discord.MessageEmbed()
         .setColor('#87727F')
