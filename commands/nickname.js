@@ -13,6 +13,7 @@ module.exports = {
 
         const mentionedMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         const nickName = args.slice(1).join(" ");
+        const lastName = mentionedMember.user.username;
 
         if (!args[0]) return message.channel.send('You must specify a member to change nickname.\nCommand Format: \`!nickname @user [nickname]\`');
         if (!mentionedMember) return message.channel.send('The member mentioned is not in the server.');
@@ -22,7 +23,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setColor('#87727F')
-        .setDescription(`Nickname Successfully changed form **${mentionedMember.user.username}** to ${mentionedMember}!`);
+        .setDescription(`Nickname Successfully changed form **${lastName}** to ${mentionedMember.user.username}!`);
 
         await mentionedMember.setNickname(nickName).then(message.channel.send(embed)).catch(err => console.log(err) && message.channel.send('There was an error in changing that member\'s nickname'));
 
