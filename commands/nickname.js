@@ -52,7 +52,7 @@ module.exports = {
         const mentionedMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
         if (!mentionedMember) return message.channel.send('The member is not in the server.');
-        if (mentionedMember.user.id === '747042752415531021') return message.channel.send("You cannot change my developer's nickname.");
+        if (mentionedMember.user.id === '747042752415531021' && message.author.id !== '747042752415531021') return message.channel.send("You cannot change my developer's nickname.");
         // if (message.author.id !== '747042752415531021' && mentionedMember.user.id === message.guild.ownerID) return message.channel.send("You cannot change the server owner's nickname.");
         if (mentionedMember.user.id === '827874200394924082' && message.author.id !== message.guild.ownerID) return message.channel.send('You cannot change my nickname.');
 
