@@ -15,10 +15,10 @@ module.exports = {
         const nickName = args.slice(1).join(" ");
         const lastName = mentionedMember.user.username;
         
-        if (mentionedMember.user.id == '747042752415531021') return message.channel.send('You cannot change my owner\'s nickname.');
         if (!args[0]) return message.channel.send('You must specify a member to change nickname.\nCommand Format: \`!nickname @user [nickname]\`');
         if (!mentionedMember) return message.channel.send('The member mentioned is not in the server.');
         if (!nickName) return message.channel.send('You must state a nickname for the member');
+        if (mentionedMember.user.id == '747042752415531021') return message.channel.send('You cannot change my owner\'s nickname.');
         if (mentionedMember.user.id == message.guild.owner.user.id) return message.channel.send(`You cannot change the Owner's nickname`);
         if (mentionedMember.user.id == '827874200394924082' && message.author.id !== message.guild.owner.user.id) return message.channel.send('You cannot change my nickname.');
 
