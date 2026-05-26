@@ -74,6 +74,7 @@ module.exports = {
         } catch (err) {
             console.log(err);
             member.guild.channels.cache.get('835486658552004608').send(err);
+            console.log(message);
             message.channel.send("There was an error changing that member's nickname.");
 
         }
