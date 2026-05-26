@@ -23,7 +23,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setColor('#87727F')
-        .setDescription(`Nickname Successfully changed form **${lastName}** to ${mentionedMember.user.username}!`);
+        .setDescription(`Nickname Successfully changed form **${lastName}** to ${mentionedMember}!`);
 
         await mentionedMember.setNickname(nickName).then(message.channel.send(embed)).catch(err => console.log(err) && message.channel.send('There was an error in changing that member\'s nickname'));
 
