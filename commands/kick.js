@@ -29,10 +29,10 @@ module.exports = {
         if (!mentionedMember) return message.channel.send('☹️ The member mentioned is not present in the server.');
         if (mentionedMember.user.id == message.author.id) return message.channel.send('You cannot kick yourself 🙅.');
         if (mentionedMember.user.id == message.guild.owner.user.id) return message.channel.send(`You cannot kick the Owner of ${message.guild.name}`);
-        if (mentionedMember.user.id == client.user.id) return message.channel.send('😡 You cannot kick me with my own command.');
+        if (mentionedMember.user.id == client.user.id) return message.channel.send('You cannot kick me with my own command.');
         if (!mentionedMember.kickable) return message.channel.send('You cannot kick a moderator! ⛔\nIf you are not able to kick members, type \`!modhelp\`');
        //if (message.member.roles.highest.position < mentionedMember.roles.highest.position && message.author.id !== '747042752415531021' && message.author.id !== message.guild.owner.user.id) return message.channel.send('You cannot kick that member because they have higher permissions than you 😕.');
-        if (mentionedMember.user.id == '747042752415531021') return message.channel.send('You cannot kick my developer at all 😡')
+        if (mentionedMember.user.id == '747042752415531021') return message.channel.send('You cannot kick my developer.');
 
         const kickedembed = new Discord.MessageEmbed()
             .setColor('#743a3a')
