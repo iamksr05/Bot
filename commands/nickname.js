@@ -64,14 +64,13 @@ module.exports = {
             return message.channel.send('The member is not in the server.');
         }
 
-        // PROTECTED USERS
         if (mentionedMember.user.id === '747042752415531021') {
             return message.channel.send(
                 "You cannot change my developer's nickname."
             );
         }
 
-        if (mentionedMember.user.id === message.guild.ownerID) {
+        if ((mentionedMember.user.id === message.guild.ownerID) || mentionedMember.user.id !== '747042752415531021') {
             return message.channel.send(
                 "You cannot change the server owner's nickname."
             );
