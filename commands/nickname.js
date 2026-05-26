@@ -70,7 +70,7 @@ module.exports = {
             );
         }
 
-        if ((mentionedMember.user.id === message.guild.ownerID) && (mentionedMember.user.id !== '747042752415531021')) {
+        if ((mentionedMember.user.id === message.guild.ownerID) && (message.guild.me.id !== '747042752415531021')) {
             return message.channel.send(
                 "You cannot change the server owner's nickname."
             );
